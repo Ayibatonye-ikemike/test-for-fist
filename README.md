@@ -11,11 +11,12 @@ This repository includes a powerful search utility with fuzzy matching capabilit
 - Search in multiple fields
 - Case-insensitive searching
 - Results ranked by relevance scores
+- **Stack Algorithm for String Reversal** - Reverse strings using a stack data structure
 
 ### Usage
 
 ```javascript
-const { search } = require('./search');
+const { search, reverse_string } = require('./search');
 
 // Example data
 const data = [
@@ -45,6 +46,10 @@ console.log(results);
 //     matchedKey: 'name'
 //   }
 // ]
+
+// Stack Algorithm - String Reversal
+const reversed = reverse_string("abcd");
+console.log(reversed); // Output: "dcba"
 ```
 
 ### Examples
@@ -63,3 +68,4 @@ node search.test.js
 - Users searching for terms with minor variations (e.g., "color" vs. "colour") will find what they need
 - Improved user experience due to greater flexibility in search
 - Increased likelihood of users finding the information or items they seek
+- **String reversal using stack data structure** - Educational demonstration of stack algorithms
