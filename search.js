@@ -92,8 +92,17 @@ function search(items, query, options = {}) {
         const itemKeys = searchKeys.length ? searchKeys : Object.keys(item);
         
         for (const key of itemKeys) {
-          if (item.hasOwnProperty(key) && typeof item[key] === 'string') {
-            const fieldValue = item[key].toLowerCase();
+          if (item.hasOwnProperty(key)) {
+            let fieldValue;
+            
+            // Handle arrays by joining them into a string
+            if (Array.isArray(item[key])) {
+              fieldValue = item[key].join(' ').toLowerCase();
+            } else if (typeof item[key] === 'string') {
+              fieldValue = item[key].toLowerCase();
+            } else {
+              continue; // Skip non-string, non-array fields
+            }
             
             // Direct field comparison
             const directScore = similarityRatio(fieldValue, queryLower);
