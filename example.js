@@ -2,7 +2,7 @@
  * Example usage of the fuzzy search functionality
  */
 
-const { search } = require('./search');
+const { search, reverse_string } = require('./search');
 
 // Sample dataset
 const products = [
@@ -65,3 +65,17 @@ performSearch('Sports', ['category'], 0.8);
 
 // Search that matches multiple items
 performSearch('Electronics', ['category'], 0.7);
+
+console.log('\n\nSTACK ALGORITHM - STRING REVERSAL EXAMPLES');
+console.log('=========================================');
+
+// Demonstrate the Stack Algorithm for String Reversal
+console.log('\nDemonstrating Stack Algorithm for String Reversal:');
+console.log('Steps: 1. Push all characters onto stack, 2. Pop them off to build reversed string\n');
+
+const examples = ['abcd', 'hello', 'Stack', 'JavaScript', 'Hello World!'];
+
+examples.forEach(str => {
+  const reversed = reverse_string(str);
+  console.log(`Original: "${str}" → Reversed: "${reversed}"`);
+});

@@ -2,7 +2,7 @@
  * Tests for search utility with fuzzy matching
  */
 
-const { search, levenshteinDistance, similarityRatio } = require('./search');
+const { search, levenshteinDistance, similarityRatio, reverse_string } = require('./search');
 
 // Test data
 const testData = [
@@ -82,3 +82,28 @@ console.log('1. Empty query:', search(testData, '', { keys: ['name'] }).length =
 console.log('2. Empty data array:', search([], 'Apple', { keys: ['name'] }).length === 0 ? 'PASS' : 'FAIL');
 console.log('3. No matching results:', search(testData, 'Pineapple', { keys: ['name'], threshold: 0.8 }).length === 0 ? 'PASS' : 'FAIL');
 console.log('4. Case insensitivity:', search(testData, 'aPpLe', { keys: ['name'] }).length > 0 ? 'PASS' : 'FAIL');
+console.log();
+
+// Stack Algorithm - String Reversal tests
+console.log('Testing Stack Algorithm - String Reversal function:');
+const reverseTests = [
+  { input: 'abcd', expected: 'dcba' },
+  { input: 'hello', expected: 'olleh' },
+  { input: 'Stack', expected: 'kcatS' },
+  { input: 'a', expected: 'a' },
+  { input: '', expected: '' },
+  { input: '12345', expected: '54321' },
+  { input: 'Hello World!', expected: '!dlroW olleH' }
+];
+
+reverseTests.forEach(test => {
+  const result = reverse_string(test.input);
+  const pass = result === test.expected;
+  console.log(`reverse_string("${test.input}"): "${result}", Expected: "${test.expected}", ${pass ? 'PASS' : 'FAIL'}`);
+});
+
+// Demonstrate the example from the issue
+console.log('\nDemonstrating the example from the issue:');
+console.log('Input: "abcd"');
+console.log('Output:', reverse_string("abcd"));
+console.log('Expected: "dcba"');

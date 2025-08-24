@@ -130,8 +130,32 @@ function search(items, query, options = {}) {
     .sort((a, b) => b.score - a.score);
 }
 
+/**
+ * Reverse a string using a stack data structure
+ * @param {string} input_string - The string to reverse
+ * @returns {string} - The reversed string
+ */
+function reverse_string(input_string) {
+  const stack = [];
+  
+  // Push all characters of the string onto the stack
+  for (const char of input_string) {
+    stack.push(char);
+  }
+  
+  let reversed_str = "";
+  
+  // Pop them off to build the reversed string
+  while (stack.length > 0) {
+    reversed_str += stack.pop();
+  }
+  
+  return reversed_str;
+}
+
 module.exports = {
   search,
   levenshteinDistance,
-  similarityRatio
+  similarityRatio,
+  reverse_string
 };
